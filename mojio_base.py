@@ -12,6 +12,11 @@ class MojioBase(RESTPolling, OAuth2):
 
     api_key = StringProperty(title="API Key", default="[[MOJIO_TOKEN]]")
 
+    def __init__(self):
+        super().__init__()
+        # We want the created at dates to be pulled out of the Time field
+        self._created_field = 'Time'
+
     def _prepare_url(self, paging=False):
         self._url = "{}{}".format(MOJIO_URL_BASE, self._get_url_endpoint())
 
@@ -21,5 +26,10 @@ class MojioBase(RESTPolling, OAuth2):
 
     def _process_response(self, resp):
         """ Overridden from RESTPolling - returns signals to notify """
+
+        # By default, just return all of the signals we get, no paging
+        return [Signal(d) for d in self._get_dicts_from_response(resp)], False
+
+    def _get_dicts_from_response(self, resp):
         resp_data = resp.json()
-        return [Signal(d) for d in resp_data['Data']], False
+        return resp_data['Data']
