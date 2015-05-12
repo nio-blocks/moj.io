@@ -1,12 +1,11 @@
 from nio.metadata.properties import StringProperty
 from nio.common.signal.base import Signal
-from .oauth2_mixin.oauth2 import OAuth2
 from .http_blocks.rest.rest_block import RESTPolling
 
 MOJIO_URL_BASE = 'https://api.moj.io/v1/'
 
 
-class MojioBase(RESTPolling, OAuth2):
+class MojioBase(RESTPolling):
 
     """ A base block for making requests to the Moj.io API """
 
