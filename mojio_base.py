@@ -32,3 +32,6 @@ class MojioBase(RESTPolling):
     def _get_dicts_from_response(self, resp):
         resp_data = resp.json()
         return resp_data['Data']
+
+    def _get_url_endpoint(self):
+        raise NotImplementedError
