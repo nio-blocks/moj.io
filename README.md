@@ -31,14 +31,14 @@ Right now, you will need to manually go through the OAuth handshake to grant the
  3. Select the proper Live or Sandbox setting at the top of the page. If you want real data, use Live. If you want to use the Moj.io Vehicle Simulator, use Sandbox
  4. Your API Token will appear in the text field to the left of the orange Set Token button
 
-MojioVehicles 
+MojioVehicles
 ===========
 
 Output
 ---------
 One signal for each poll for each vehicle that the API Key has access to. The schema for the vehcile response can be found through the [Moj.io Schema API Call](https://api.moj.io/v1/Schema?entityType=Vehicle).
 
-MojioEvents 
+MojioEvents
 ===========
 
 Output
