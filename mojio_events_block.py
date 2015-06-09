@@ -1,5 +1,6 @@
 from .mojio_base import MojioBase
 from nio.common.signal.base import Signal
+from nio.metadata.properties import VersionProperty
 from nio.common.discovery import Discoverable, DiscoverableType
 
 
@@ -7,6 +8,7 @@ from nio.common.discovery import Discoverable, DiscoverableType
 class MojioEvents(MojioBase):
 
     """ Notify events from connected moj.io vehicles """
+    version = VersionProperty('2.0.0')
 
     def _get_url_endpoint(self):
         return 'Events'

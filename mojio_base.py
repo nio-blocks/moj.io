@@ -1,27 +1,64 @@
-from nio.metadata.properties import StringProperty
+from nio.metadata.properties import StringProperty, PropertyHolder, \
+    ObjectProperty
 from nio.common.signal.base import Signal
 from .http_blocks.rest.rest_block import RESTPolling
+from .oauth2_mixin.oauth2_password import OAuth2PasswordGrant
 
 MOJIO_URL_BASE = 'https://api.moj.io/v1/'
 
 
-class MojioBase(RESTPolling):
+class MojioCreds(PropertyHolder):
+    username = StringProperty(
+        title="Moj.io Username", default="[[MOJIO_USERNAME]]")
+    password = StringProperty(
+        title="Moj.io Password", default="[[MOJIO_PASSWORD]]")
+    client_id = StringProperty(
+        title="Moj.io Client ID", default="[[MOJIO_CLIENT_ID]]")
+    client_secret = StringProperty(
+        title="Moj.io Client Secret", default="[[MOJIO_CLIENT_SECRET]]")
+
+
+class MojioBase(OAuth2PasswordGrant, RESTPolling):
 
     """ A base block for making requests to the Moj.io API """
 
-    api_key = StringProperty(title="API Key", default="[[MOJIO_TOKEN]]")
+    creds = ObjectProperty(MojioCreds, title='Moj.io Credentials')
 
     def __init__(self):
         super().__init__()
         # We want the created at dates to be pulled out of the Time field
         self._created_field = 'Time'
 
+    def get_oauth_base_url(self):
+        return 'https://api.moj.io/OAuth2/'
+
+    def _authenticate(self):
+        """ Overridden from REST Polling block - get OAuth token here """
+        try:
+            token_info = self.get_access_token(
+                username=self.creds.username,
+                password=self.creds.password,
+                addl_params={
+                    'client_id': self.creds.client_id,
+                    'client_secret': self.creds.client_secret
+                })
+            self._logger.debug("Token retrieved: {}".format(token_info))
+        except:
+            self._logger.exception("Error obtaining access token")
+
     def _prepare_url(self, paging=False):
         self._url = "{}{}".format(MOJIO_URL_BASE, self._get_url_endpoint())
 
-        return {
-            'MojioAPIToken': self.api_key
-        }
+        if not self.authenticated():
+            self._logger.error("You must be authenticated to poll")
+            return
+
+        try:
+            return {
+                'MojioAPIToken': self._oauth_token.get('access_token')
+            }
+        except:
+            self._logger.exception("Unable to set header with access token")
 
     def _process_response(self, resp):
         """ Overridden from RESTPolling - returns signals to notify """
