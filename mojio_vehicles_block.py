@@ -1,9 +1,9 @@
 from .mojio_base import MojioBase
-from nio.common.discovery import Discoverable, DiscoverableType
-from nio.metadata.properties import VersionProperty
+from nio.util.discovery import discoverable
+from nio.properties import VersionProperty
 
 
-@Discoverable(DiscoverableType.block)
+@discoverable
 class MojioVehicles(MojioBase):
 
     """ Notify details of connected moj.io vehicles """

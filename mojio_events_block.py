@@ -1,10 +1,10 @@
 from .mojio_base import MojioBase
-from nio.common.signal.base import Signal
-from nio.metadata.properties import VersionProperty
-from nio.common.discovery import Discoverable, DiscoverableType
+from nio.signal.base import Signal
+from nio.properties import VersionProperty
+from nio.util.discovery import discoverable
 
 
-@Discoverable(DiscoverableType.block)
+@discoverable
 class MojioEvents(MojioBase):
 
     """ Notify events from connected moj.io vehicles """
@@ -25,6 +25,6 @@ class MojioEvents(MojioBase):
             # TODO: Make paging work - right now doing no paging
             paging = False
 
-        self._logger.debug("Read {} posts, {} are fresh".format(
+        self.logger.debug("Read {} posts, {} are fresh".format(
             len(posts), len(fresh_posts)))
         return [Signal(d) for d in fresh_posts], paging

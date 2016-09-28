@@ -1,9 +1,10 @@
 import responses
 import json
 from collections import defaultdict
-from nio.common.signal.base import Signal
-from nio.util.support.block_test_case import NIOBlockTestCase
+from nio.signal.base import Signal
+from nio.testing.block_test_case import NIOBlockTestCase
 from ..mojio_vehicles_block import MojioVehicles
+from nio.block.terminals import DEFAULT_TERMINAL
 
 SAMPLE_RESPONSE = {
     "PageSize": 10,
@@ -24,11 +25,6 @@ class TestMojioVehicles(NIOBlockTestCase):
 
     def setUp(self):
         super().setUp()
-        # This will keep a list of signals notified for each output
-        self.last_notified = defaultdict(list)
-
-    def signals_notified(self, signals, output_id='default'):
-        self.last_notified[output_id].extend(signals)
 
     @responses.activate
     def test_request(self):
@@ -47,7 +43,7 @@ class TestMojioVehicles(NIOBlockTestCase):
 
         blk.process_signals([Signal()])
         self.assert_num_signals_notified(1)
-        self.assertEqual(self.last_notified['default'][0].MojioId,
+        self.assertEqual(self.last_notified[DEFAULT_TERMINAL][0].MojioId,
                          'FAKE-MOJIO-ID')
 
         blk.stop()
