@@ -1,6 +1,6 @@
-from nio.metadata.properties import StringProperty, PropertyHolder, \
+from nio.properties import StringProperty, PropertyHolder, \
     ObjectProperty
-from nio.common.signal.base import Signal
+from nio.signal.base import Signal
 from .http_blocks.rest.rest_block import RESTPolling
 from .oauth2_mixin.oauth2_password import OAuth2PasswordGrant
 
@@ -36,21 +36,21 @@ class MojioBase(OAuth2PasswordGrant, RESTPolling):
         """ Overridden from REST Polling block - get OAuth token here """
         try:
             token_info = self.get_access_token(
-                username=self.creds.username,
-                password=self.creds.password,
+                username=self.creds().username(),
+                password=self.creds().password(),
                 addl_params={
-                    'client_id': self.creds.client_id,
-                    'client_secret': self.creds.client_secret
+                    'client_id': self.creds().client_id(),
+                    'client_secret': self.creds().client_secret()
                 })
-            self._logger.debug("Token retrieved: {}".format(token_info))
+            self.logger.debug("Token retrieved: {}".format(token_info))
         except:
-            self._logger.exception("Error obtaining access token")
+            self.logger.exception("Error obtaining access token")
 
     def _prepare_url(self, paging=False):
         self._url = "{}{}".format(MOJIO_URL_BASE, self._get_url_endpoint())
 
         if not self.authenticated():
-            self._logger.error("You must be authenticated to poll")
+            self.logger.error("You must be authenticated to poll")
             return
 
         try:
@@ -58,7 +58,7 @@ class MojioBase(OAuth2PasswordGrant, RESTPolling):
                 'MojioAPIToken': self._oauth_token.get('access_token')
             }
         except:
-            self._logger.exception("Unable to set header with access token")
+            self.logger.exception("Unable to set header with access token")
 
     def _process_response(self, resp):
         """ Overridden from RESTPolling - returns signals to notify """
