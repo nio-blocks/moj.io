@@ -1,0 +1,12 @@
+{
+  "nio/MojioEvents": {
+    "Version": "1.0.0",
+    "Reference": "github.com/nio-blocks/mojio.git@v1.0.0",
+    "Language": "Python"
+  },
+  "nio/MojioVehicles": {
+    "Version": "1.0.0",
+    "Reference": "github.com/nio-blocks/mojio.git@v1.0.0",
+    "Language": "Python"
+  }
+}
