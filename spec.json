@@ -1,84 +1,18 @@
 {
   "nio/MojioEvents": {
-    "Commands": {},
-    "Dependencies": [],
-    "Description": "",
-    "Input": "",
-    "Output": "",
-    "Properties": {
-      "Include Query Field": {
-        "description": ""
-      },
-      "Moj.io Credentials": {
-        "default": {
-          "client_id": "[[MOJIO_CLIENT_ID]]",
-          "client_secret": "[[MOJIO_CLIENT_SECRET]]",
-          "password": "[[MOJIO_PASSWORD]]",
-          "username": "[[MOJIO_USERNAME]]"
-        },
-        "description": ""
-      },
-      "Polling Interval": {
-        "default": {
-          "seconds": 20
-        },
-        "description": ""
-      },
-      "Query Strings": {
-        "description": ""
-      },
-      "Retry Interval": {
-        "default": {
-          "seconds": 60
-        },
-        "description": ""
-      },
-      "Retry Limit": {
-        "default": 3,
-        "description": ""
-      }
-    },
-    "Version": "2.0.0"
+    "version": "0.0.1",
+    "description": "",
+    "inputs": {},
+    "outputs": {},
+    "properties": {},
+    "commands": {}
   },
   "nio/MojioVehicles": {
-    "Commands": {},
-    "Dependencies": [],
-    "Description": "",
-    "Input": "",
-    "Output": "",
-    "Properties": {
-      "Include Query Field": {
-        "description": ""
-      },
-      "Moj.io Credentials": {
-        "default": {
-          "client_id": "[[MOJIO_CLIENT_ID]]",
-          "client_secret": "[[MOJIO_CLIENT_SECRET]]",
-          "password": "[[MOJIO_PASSWORD]]",
-          "username": "[[MOJIO_USERNAME]]"
-        },
-        "description": ""
-      },
-      "Polling Interval": {
-        "default": {
-          "seconds": 20
-        },
-        "description": ""
-      },
-      "Query Strings": {
-        "description": ""
-      },
-      "Retry Interval": {
-        "default": {
-          "seconds": 60
-        },
-        "description": ""
-      },
-      "Retry Limit": {
-        "default": 3,
-        "description": ""
-      }
-    },
-    "Version": "2.0.0"
+    "version": "0.0.1",
+    "description": "",
+    "inputs": {},
+    "outputs": {},
+    "properties": {},
+    "commands": {}
   }
 }
