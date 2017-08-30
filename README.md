@@ -9,7 +9,7 @@ Properties
 - **polling_interval**: How often Mojio is polled. When using more than one query. Each query will be polled at a period equal to the *polling interval* times the number of queries.
 - **queries**: Inherited from base rest polling block but not used.
 - **retry_interval**: When a url request fails, how long to wait before attempting to try again.
-- **retry_limit**: Number if times to retry on a poll.
+- **retry_limit**: Number of times to retry on a poll.
 
 Inputs
 ------
@@ -43,7 +43,7 @@ Properties
 - **polling_interval**: How often Mojio is polled. When using more than one query. Each query will be polled at a period equal to the *polling interval* times the number of queries.
 - **queries**: Inherited from base rest polling block but not used.
 - **retry_interval**: When a url request fails, how long to wait before attempting to try again.
-- **retry_limit**: Number if times to retry on a poll.
+- **retry_limit**: Number of times to retry on a poll.
 
 Inputs
 ------
