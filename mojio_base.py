@@ -1,7 +1,8 @@
 from nio.properties import StringProperty, PropertyHolder, \
     ObjectProperty
 from nio.signal.base import Signal
-from .http_blocks.rest.rest_block import RESTPolling
+from nio.util.discovery import not_discoverable
+from .rest_polling.rest_polling_base import RESTPolling
 from .oauth2_mixin.oauth2_password import OAuth2PasswordGrant
 
 MOJIO_URL_BASE = 'https://api.moj.io/v1/'
@@ -18,6 +19,7 @@ class MojioCreds(PropertyHolder):
         title="Moj.io Client Secret", default="[[MOJIO_CLIENT_SECRET]]")
 
 
+@not_discoverable
 class MojioBase(OAuth2PasswordGrant, RESTPolling):
 
     """ A base block for making requests to the Moj.io API """
