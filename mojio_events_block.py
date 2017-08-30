@@ -1,10 +1,8 @@
 from .mojio_base import MojioBase
 from nio.signal.base import Signal
 from nio.properties import VersionProperty
-from nio.util.discovery import discoverable
 
 
-@discoverable
 class MojioEvents(MojioBase):
 
     """ Notify events from connected moj.io vehicles """

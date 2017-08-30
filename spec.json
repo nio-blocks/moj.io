@@ -1,18 +1,126 @@
 {
   "nio/MojioEvents": {
-    "version": "0.0.1",
-    "description": "",
-    "inputs": {},
-    "outputs": {},
-    "properties": {},
+    "version": "2.0.0",
+    "description": "Retrieve each new event from Mojio.",
+    "properties": {
+      "creds": {
+        "title": "Moj.io Credentials",
+        "type": "ObjectType",
+        "description": "Credentials to connect to Mojio API.",
+        "default": {
+          "client_id": "[[MOJIO_CLIENT_ID]]",
+          "username": "[[MOJIO_USERNAME]]",
+          "password": "[[MOJIO_PASSWORD]]",
+          "client_secret": "[[MOJIO_CLIENT_SECRET]]"
+        }
+      },
+      "include_query": {
+        "title": "Include Query Field",
+        "type": "StringType",
+        "description": "Whether to include queries in request to Mojio.",
+        "default": null
+      },
+      "polling_interval": {
+        "title": "Polling Interval",
+        "type": "TimeDeltaType",
+        "description": "How often Mojio is polled. When using more than one query. Each query will be polled at a period equal to the *polling interval* times the number of queries.",
+        "default": {
+          "seconds": 20
+        }
+      },
+      "queries": {
+        "title": "Query Strings",
+        "type": "ListType",
+        "description": "Inherited from base rest polling block but not used.",
+        "default": []
+      },
+      "retry_interval": {
+        "title": "Retry Interval",
+        "type": "TimeDeltaType",
+        "description": "When a url request fails, how long to wait before attempting to try again.",
+        "default": {
+          "seconds": 60
+        }
+      },
+      "retry_limit": {
+        "title": "Retry Limit",
+        "type": "IntType",
+        "description": "Number if times to retry on a poll.",
+        "default": 3
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "One signal for each poll for each **new** event since the last poll. The schema for the vehicle response can be found through the [Moj.io Schema API Call](https://api.moj.io/v1/Schema?entityType=Event)."
+      }
+    },
     "commands": {}
   },
   "nio/MojioVehicles": {
-    "version": "0.0.1",
-    "description": "",
-    "inputs": {},
-    "outputs": {},
-    "properties": {},
+    "version": "2.0.0",
+    "description": "Get information about each vehicle available on Mojio.",
+    "properties": {
+      "creds": {
+        "title": "Moj.io Credentials",
+        "type": "ObjectType",
+        "description": "Credentials to connect to Mojio API.",
+        "default": {
+          "client_id": "[[MOJIO_CLIENT_ID]]",
+          "username": "[[MOJIO_USERNAME]]",
+          "password": "[[MOJIO_PASSWORD]]",
+          "client_secret": "[[MOJIO_CLIENT_SECRET]]"
+        }
+      },
+      "include_query": {
+        "title": "Include Query Field",
+        "type": "StringType",
+        "description": "Whether to include queries in request to Mojio.",
+        "default": null
+      },
+      "polling_interval": {
+        "title": "Polling Interval",
+        "type": "TimeDeltaType",
+        "description": "How often Mojio is polled. When using more than one query. Each query will be polled at a period equal to the *polling interval* times the number of queries.",
+        "default": {
+          "seconds": 20
+        }
+      },
+      "queries": {
+        "title": "Query Strings",
+        "type": "ListType",
+        "description": "Inherited from base rest polling block but not used.",
+        "default": []
+      },
+      "retry_interval": {
+        "title": "Retry Interval",
+        "type": "TimeDeltaType",
+        "description": "When a url request fails, how long to wait before attempting to try again.",
+        "default": {
+          "seconds": 60
+        }
+      },
+      "retry_limit": {
+        "title": "Retry Limit",
+        "type": "IntType",
+        "description": "Number if times to retry on a poll.",
+        "default": 3
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "One signal for each poll for each vehicle that the API Key has access to. The schema for the vehicle response can be found through the [Moj.io Schema API Call](https://api.moj.io/v1/Schema?entityType=Vehicle)."
+      }
+    },
     "commands": {}
   }
 }

@@ -30,6 +30,8 @@ class TestMojioVehicles(NIOBlockTestCase):
     def test_request(self):
         blk = MojioVehicles()
 
+        responses.add(responses.POST, 'https://api.moj.io/OAuth2/token',
+                      json={}, status=200)
         responses.add(responses.GET, 'https://api.moj.io/v1/Vehicles',
                       body=json.dumps(SAMPLE_RESPONSE), status=200,
                       content_type='application/json')
