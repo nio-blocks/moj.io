@@ -2,6 +2,9 @@
   "nio/MojioEvents": {
     "version": "2.0.0",
     "description": "Retrieve each new event from Mojio.",
+    "categories": [
+      "Web Data"
+    ],
     "properties": {
       "creds": {
         "title": "Moj.io Credentials",
@@ -64,6 +67,9 @@
   "nio/MojioVehicles": {
     "version": "2.0.0",
     "description": "Get information about each vehicle available on Mojio.",
+    "categories": [
+      "Web Data"
+    ],
     "properties": {
       "creds": {
         "title": "Moj.io Credentials",
