@@ -17,7 +17,7 @@ Inputs
 
 Outputs
 -------
-- **default**: One signal for each poll for each **new** event since the last poll. The schema for the vehicle response can be found through the [Moj.io Schema API Call](https://api.moj.io/v1/Schema?entityType=Event).
+- **default**: One signal for each poll for each **new** event since the last poll.
 
 Commands
 --------
@@ -51,7 +51,7 @@ Inputs
 
 Outputs
 -------
-- **default**: One signal for each poll for each vehicle that the API Key has access to. The schema for the vehicle response can be found through the [Moj.io Schema API Call](https://api.moj.io/v1/Schema?entityType=Vehicle).
+- **default**: One signal for each poll for each vehicle that the API Key has access to.
 
 Commands
 --------
