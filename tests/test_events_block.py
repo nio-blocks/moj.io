@@ -43,7 +43,7 @@ class TestMojioEvents(NIOBlockTestCase):
         blk.prev_freshest = blk.created_epoch(SAMPLE_RESPONSE['Data'][-1])
         responses.add(responses.POST, 'https://api.moj.io/OAuth2/token',
                       json={}, status=200)
-        responses.add(responses.GET, 'https://api.moj.io/v1/Events',
+        responses.add(responses.GET, 'https://api.moj.io/v2/Events',
                       body=json.dumps(SAMPLE_RESPONSE), status=200,
                       content_type='application/json')
         self.configure_block(blk, {
