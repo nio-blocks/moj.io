@@ -32,7 +32,7 @@ class TestMojioVehicles(NIOBlockTestCase):
 
         responses.add(responses.POST, 'https://api.moj.io/OAuth2/token',
                       json={}, status=200)
-        responses.add(responses.GET, 'https://api.moj.io/v1/Vehicles',
+        responses.add(responses.GET, 'https://api.moj.io/v2/vehicles',
                       body=json.dumps(SAMPLE_RESPONSE), status=200,
                       content_type='application/json')
         self.configure_block(blk, {

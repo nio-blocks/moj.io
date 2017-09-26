@@ -5,7 +5,7 @@ from nio.util.discovery import not_discoverable
 from .rest_polling.rest_polling_base import RESTPolling
 from .oauth2_mixin.oauth2_password import OAuth2PasswordGrant
 
-MOJIO_URL_BASE = 'https://api.moj.io/v1/'
+MOJIO_URL_BASE = 'https://api.moj.io/v2/'
 
 
 class MojioCreds(PropertyHolder):
