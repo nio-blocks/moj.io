@@ -8,4 +8,4 @@ class MojioVehicles(MojioBase):
     version = VersionProperty("2.0.2")
 
     def _get_url_endpoint(self):
-        return 'Vehicles'
+        return 'vehicles'
