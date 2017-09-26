@@ -6,7 +6,7 @@ from nio.properties import VersionProperty
 class MojioEvents(MojioBase):
 
     """ Notify events from connected moj.io vehicles """
-    version = VersionProperty("2.0.2")
+    version = VersionProperty("2.0.3")
 
     def _get_url_endpoint(self):
         return 'Events'

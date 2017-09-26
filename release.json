@@ -2,7 +2,7 @@
   "nio/MojioEvents": {
     "language": "Python",
     "url": "git://github.com/nio-blocks/mojio.git",
-    "version": "2.0.2"
+    "version": "2.0.3"
   },
   "nio/MojioVehicles": {
     "language": "Python",
